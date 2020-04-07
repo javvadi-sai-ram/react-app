@@ -1,0 +1,34 @@
+.input{
+    margin-top:20px;
+}
+.input-tag{
+    height:50px;
+    width:300px;
+    display:flex;
+    justify-content:center;
+    margin:auto;
+}
+.textDecor{
+    text-decoration:line-through
+}
+.nodecor{
+    text-decoration:none
+}
+.flex{
+    display: flex;
+    justify-content:space-between;
+    width:300px;
+    align-items:center;
+    border:1px solid black;
+    margin:Auto;
+}
+.footer{
+    
+    display:flex;
+    font-size:10px;
+    width:300px;
+    margin:auto;
+}
+body{
+  
+}

@@ -146,6 +146,7 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '70':'70vh'
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -413,6 +414,7 @@ module.exports = {
       '11/12': '91.666667%',
       full: '100%',
       screen: '100vw',
+      
     }),
     zIndex: {
       auto: 'auto',
@@ -692,3 +694,10 @@ module.exports = {
   corePlugins: {},
   plugins: [],
 }
+module.exports = {
+  theme: {
+    boxShadow: {
+      custom: "0 3px 6px #999, 0 3px 6px #999"
+    }
+  }
+};
