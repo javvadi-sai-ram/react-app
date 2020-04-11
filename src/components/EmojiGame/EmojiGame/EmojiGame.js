@@ -109,7 +109,7 @@ class EmojiGame extends React.Component{
             <Navbar ScoreUpdate={score} topscore={topscore} onChangeTheme={this.onChangeTheme} theme={this.themeOptions[this.state.theme]}/>
             {gameState==="PLAYING"?
             <EmojiCard emojisDetails={emojis} onEmojiClick={this.onEmojiClick} theme={this.themeOptions[this.state.theme]}/>
-            :<WinOrLose ScoreUpdate={score} gameState={gameState} onPlayAgain={this.onPlayAgain}/>}
+            :<WinOrLose ScoreUpdate={score} gameState={gameState} onPlayAgain={this.onPlayAgain} theme={this.themeOptions[this.state.theme]}/>}
             <HowToPlay theme={this.themeOptions[this.state.theme]}/>
             </div>
             );

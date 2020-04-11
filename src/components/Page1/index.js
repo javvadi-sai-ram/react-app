@@ -1,24 +1,12 @@
 /** @jsx jsx */ 
 /*global styled*/
 import React from "react";
-import logo from "../../logo.svg";
-import { jsx } from '@emotion/core';
-import styled from '@emotion/styled';
-import { render } from 'react-dom';
+import {Provider,inject} from "mobx-react"; 
+import {observer} from "mobx-react";
+import {observable} from "mobx";
 
 
-const Button=styled.button`
-color:white;
-background:red;
-padding:7px 10px;
-border-radius:5px;
-&:hover{
-  background:blue;
-}
-`
-
-
-class Page1 extends React.Component {
+/*class Page1 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -47,6 +35,59 @@ class Page1 extends React.Component {
       </div>
     );
     }
+  }
+}*/
+
+
+
+
+
+
+
+@inject("temp")
+class Page3 extends React.Component{
+  render(){
+    const {temp}=this.props;
+    console.log("2",temp)
+    return(
+      
+    <div>
+    hi
+    </div>
+    )
+  }
+}
+
+
+@inject("temp")
+@observer
+class Page2 extends React.Component{
+  @observable name;
+  
+  handleClick=(event)=>{
+    this.name=event.target.value
+  }
+  render(){
+    const {temp}=this.props;
+    console.log("1",temp)
+    return(
+      <div>
+      <input type="text" value={this.value} onChange={this.handleClick}/>
+    <Page3 name={this.name}/>
+    </div>
+    )
+  }
+}
+
+
+class Page1 extends React.Component{
+  render(){
+    const {temp}=this.props;
+    return(
+      <Provider temp={'value'}>
+      <Page2/>
+      </Provider>
+      )
   }
 }
 
