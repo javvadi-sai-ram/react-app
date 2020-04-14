@@ -1,14 +1,16 @@
 import React from "react";
-import eventStores from "../../stores/EventStore/eventStore.js";
-//import {EventName,EventLocation,EventAdder,AddEventbutton} from "./eventlistcss.js";
 import {observer} from "mobx-react";
-import EventList from "./EventList.js";
-import AddEvent from "./AddEvent.js";
+import eventStores from "../../stores/EventStore/eventStore";
+import EventList from "./EventList";
+import AddEvent from "./AddEvent";
 
 
+type EventAppProps={
+    EventList:any
+}
      
 @observer
-class EventApp extends React.Component{
+class EventApp extends React.Component<EventAppProps>{
     render(){
         
         return(

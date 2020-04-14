@@ -1,10 +1,10 @@
 import React from "react";
-
 import {observable,action,computed,reaction} from 'mobx';
 import {observer} from 'mobx-react';
-import TodoFooter from "../../components/modtodolist/todoFooter.js";
-import Todo from "../../components/modtodolist/todo.js";
-import TodoModel from "./todoModel.js"
+
+import TodoFooter from "../../components/modtodolist/todoFooter";
+import Todo from "../../components/modtodolist/todo";
+import TodoModel from "./todoModel"
 
 //@observer
 class TodoStore {
@@ -49,25 +49,19 @@ class TodoStore {
         let newDupList = dupList.filter(eachEl => eachEl.todoCheckStatus === false);
         this.listOfTodos= newDupList;
     }
-    renderTodosList(){
+    
+    
+  @computed get renderTodosList(){
         let dupList = this.listOfTodos.slice(0);
         let newbtn = this.todoFooterState;
-        let newDupList; 
         switch (newbtn) {
-            
             case "all":
-                newDupList = dupList.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo} />);
-                break;
+                return dupList
             case "active":
-                let dupList1 = dupList.filter((eachEl => eachEl.todoCheckStatus === false));
-                newDupList = dupList1.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo}/>);
-                break;
+                return dupList.filter((eachEl => eachEl.todoCheckStatus === false));
             case "completed":
-                let dupList2 = dupList.filter((eachEl => eachEl.todoCheckStatus === true));
-                newDupList = dupList2.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo}/>);
-                break;
+                return dupList.filter((eachEl => eachEl.todoCheckStatus === true));
         }
-        return newDupList;
     }
     
     
@@ -94,7 +88,7 @@ class TodoStore {
   
     @action.bound todosFooter () {
         if ( this.todosCount> 0)
-            return <TodoFooter numOfTodos={this.numberOfItems} allTodos={this.allTodos} active={this.active} completed={this.completed} clearCompleted={this.clearCompleted} numOfCompletedTodos={this.clearCompletedCount}/>;
+            return (<TodoFooter numOfTodos={this.numberOfItems} allTodos={this.allTodos} active={this.active} completed={this.completed} clearCompleted={this.clearCompleted} numOfCompletedTodos={this.clearCompletedCount}/>);
     }
     
     

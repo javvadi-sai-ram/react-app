@@ -1,7 +1,9 @@
 import React from "react";
-import eventStores from "../../stores/EventStore/eventStore.js";
-import {EventName,EventLocation,EventAdder,AddEventbutton} from "./eventlistcss.js";
 import {observer} from "mobx-react";
+
+import eventStores from "../../stores/EventStore/eventStore";
+import {EventName,EventLocation,EventAdder,AddEventbutton} from "./eventlistcss";
+
 
 
 

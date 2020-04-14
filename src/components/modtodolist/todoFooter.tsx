@@ -1,7 +1,7 @@
 import React from "react";
 import {observer} from "mobx-react";
 //import TodoStores from "../TodoStore/todoStore.js"
-import TodoStores from "../../stores/TodoStore/todoStore.js";
+import TodoStores from "../../stores/TodoStore/todoStore";
 @observer
 class TodoFooter extends React.Component {
     constructor(props) {

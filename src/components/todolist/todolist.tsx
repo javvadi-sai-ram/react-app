@@ -1,10 +1,11 @@
 import React from 'react';
-import './todo.css';
-import TodoFooter from "./todoFooter.js"
-import Todo from "./todo.js"
-
 import {observable,action,computed} from 'mobx';
 import {observer} from 'mobx-react';
+
+import './todoCss';
+import TodoFooter from "./todoFooter"
+import Todo from "./todo"
+
 
 @observer class TodosList extends React.Component {
 

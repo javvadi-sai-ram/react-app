@@ -1,16 +1,26 @@
-import React from "react";
+//import React from "react";
 import {observable,action} from "mobx";
-import EventModel from "./EventModel.js";
+import EventModel from "./EventModel";
+
+type InputEvent=React.ChangeEvent<HTMLInputElement>
+
+
 
 class EventStore{
     eventId=0
-    @observable listOfEvents=[]
+    @observable listOfEvents:Array<EventModel> = [];
+    @observable eventName:string;
+    @observable eventLocation:string
     
-    @action.bound onChangeEventName(event){
-        this.eventName=event.target.value;
-        console.log(this.eventName)
+    constructor(){
+        this.eventName="",
+        this.eventLocation=""
     }
-    @action.bound onChangeEventLocation(event){
+    @action.bound onChangeEventName(event:InputEvent){
+        this.eventName=event.target.value;
+       // console.log(this.eventName)
+    }
+    @action.bound onChangeEventLocation(event:InputEvent){
         this.eventLocation=event.target.value;
     }
     
@@ -21,7 +31,7 @@ class EventStore{
            this.listOfEvents=DuplicateListOfEvents;
     }
     @action.bound
-    onDeleteEvent(item){
+    onDeleteEvent(item:EventModel){
         let DuplicateListOfEvents=this.listOfEvents.filter(eachObj=>eachObj.id!==item.id);
         this.listOfEvents=DuplicateListOfEvents;
     }
@@ -29,7 +39,7 @@ class EventStore{
 
 
 
-const eventStores=new EventStore();
+const eventStores=new EventStore()
 
 
 export default eventStores;

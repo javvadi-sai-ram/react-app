@@ -1,28 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import Page1 from "./components/Page1";
-
-
-import {CountrydashBoardApp} from "./components/countryData/countrydashBoardApp.js";
-import CountryCard from "./components/countryData/countryCard.js";
-import Todo from './components/modtodolist/todolist.js';
-import EmojiGame from "./components/EmojiGame/EmojiGame/EmojiGame.js";
-import CounterPage from "./components/CounterPage/index.js";
-import CounterDashboard from "./components/CounterPage/CounterDashboard.js";
-import EventApp from "./components/EventList/EventApp.js";
-import "./App.css";
-
-
 import {observable} from "mobx";  
 import {observer} from 'mobx-react';
 
-import themeStore from "./stores/ThemeStore/themeStore.js";
+
+import HomePage from "./components/HomePage";
+import Page1 from "./components/Page1";
+import {CountrydashBoardApp} from "./components/countryData/countrydashBoardApp.js";
+import CountryCard from "./components/countryData/countryCard.js";
+import Todo from './components/modtodolist/todolist';
+import EmojiGame from "./components/EmojiGame/EmojiGame/EmojiGame.js";
+import CounterPage from "./components/CounterPage/index";
+import CounterDashboard from "./components/CounterPage/CounterDashboard.js";
+import EventApp from "./components/EventList/EventApp";
+import "./App.css";
+import themeStore from "./stores/ThemeStore/themeStore";
 
 //configure({ enforceActions:true});
+type themeprops={
+    theme:any
+}
 
-@observer
-class App extends React.Component{
+class App extends React.Component<themeprops>{
  // @observable boolForColorMode=true
   
   getCurrentTheme=()=>{
@@ -50,7 +49,7 @@ class App extends React.Component{
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
       <Route exact path="/counter-page">
-          <CounterPage />
+          <Page1 />
         </Route>
         
             <Route exact path="/page-1">
