@@ -5,12 +5,8 @@ import EventList from "./EventList";
 import AddEvent from "./AddEvent";
 
 
-type EventAppProps={
-    EventList:any
-}
-     
 @observer
-class EventApp extends React.Component<EventAppProps>{
+class EventApp extends React.Component{
     render(){
         
         return(

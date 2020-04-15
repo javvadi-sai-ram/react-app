@@ -9,18 +9,14 @@ import EventModel from "../../stores/EventStore/EventModel";
 
 //import {EventName,EventLocation,EventAdder,AddEventbutton} from "./eventlistcss.js";
 
-type EventListProps={
-    onDeleteEvent:Function,
-    displayList:any,
-    object:any
-}
+
 
 @observer
-class EventList extends React.Component<EventListProps>{
+class EventList extends React.Component{
    render(){
             return(
                 <div>
-                {this.props.displayList.map((item:EventModel)=><Event key={item.id} object={item} onDeleteEvent={this.props.onDeleteEvent}/>)}
+                {this.props.displayList.map(item=><Event key={item.id} object={item} onDeleteEvent={this.props.onDeleteEvent}/>)}
                 </div>
                 )
         

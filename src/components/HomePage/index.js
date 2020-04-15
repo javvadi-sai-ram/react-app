@@ -24,6 +24,7 @@ function App() {
         <Link to="/counter-game">Counter App</Link>
         <Link to="/todo">Todos App</Link>
         <Link to="/EventList">Event App</Link>
+        <Link to="/GridGameApp">GridGame App</Link>
       </header>
     </div>
   );

@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {observable} from "mobx";  
-import {observer} from 'mobx-react';
-
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
@@ -15,14 +12,10 @@ import CounterDashboard from "./components/CounterPage/CounterDashboard.js";
 import EventApp from "./components/EventList/EventApp";
 import "./App.css";
 import themeStore from "./stores/ThemeStore/themeStore";
+import GridMemoryGame from "./components/GridGame/GridMemory/index";
 
-//configure({ enforceActions:true});
-type themeprops={
-    theme:any
-}
 
-class App extends React.Component<themeprops>{
- // @observable boolForColorMode=true
+class App extends React.Component{
   
   getCurrentTheme=()=>{
     return themeStore.boolForColorMode;
@@ -32,18 +25,7 @@ class App extends React.Component<themeprops>{
    themeStore.updateTheme(theme);
   }
   
-   /*lightMode=(event)=>{
-       if(this.state.boolForColorMode){
-       this.setState({boolForColorMode:false});}
-       if(!this.state.boolForColorMode){
-       this.setState({boolForColorMode:true});}
-   }*/
-  /*lightMode=(event)=>{
-       if(this.getCurrentTheme()){
-             this.setCurrentTheme(false);}
-       else{
-           this.setCurrentTheme(true);}
-  }*/
+   
   render(){
   return (
     <Router basename={process.env.PUBLIC_URL}>
@@ -58,6 +40,9 @@ class App extends React.Component<themeprops>{
         
         <Route path="/countrydashBoardApp">
             <CountrydashBoardApp lightMode={this.lightMode} boolForColorMode={this.getCurrentTheme()} />
+          </Route>
+          <Route path="/GridGameApp">
+            <GridMemoryGame/>
           </Route>
           
           <Route path="/goToCountryCard">

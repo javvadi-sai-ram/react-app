@@ -4,13 +4,8 @@ import {observer} from "mobx-react";
 
 
 
-type eventprops={
-    onDeleteEvent:any,
-        object:any
-}
-
 @observer
-class Event extends React.Component<eventprops>{
+class Event extends React.Component{
     @observable isEditEvent;
     constructor(props){
         super(props);
