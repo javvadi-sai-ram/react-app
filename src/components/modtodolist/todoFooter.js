@@ -22,8 +22,18 @@ class TodoFooter extends React.Component {
                         </div>
                         
                 </div>
-                )
+                );
     }
 }
 
-export default TodoFooter        
+class TodoFooterNoData extends React.Component{
+    render(){
+        return(
+            <div className="NoDataFound">
+            No Data Found!
+            </div>
+            );
+    }
+}
+
+export {TodoFooter,TodoFooterNoData};        

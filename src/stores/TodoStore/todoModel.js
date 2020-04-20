@@ -1,4 +1,4 @@
-import React from "react"
+//import React from "react"
 
 import {observable,action} from "mobx";
 
@@ -8,13 +8,14 @@ class TodoModel{
     @observable todoCheckStatus;
     
     
-    constructor(props){
+    constructor(props){   
         this.id=props.id;
     this.todo=props.todo;   
    this.todoCheckStatus=props.todoCheckStatus;
     }
     
      @action.bound checkTodo(){
+         console.log(this.props)
          if(this.todoCheckStatus===true)
          {
              this.todoCheckStatus=false;
@@ -25,8 +26,8 @@ class TodoModel{
      }
      @action.bound
      updateTodo(event){
-        this.todo=(event.target.value)
+        this.todo=(event.target.value);
      }
 }
 
-export default TodoModel
+export default TodoModel;

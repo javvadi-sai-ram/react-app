@@ -1,20 +1,29 @@
 import React from "react";
-import {observable,action,computed,reaction} from 'mobx';
-import {observer} from 'mobx-react';
 
-import TodoFooter from "../../components/modtodolist/todoFooter";
-import Todo from "../../components/modtodolist/todo";
-import TodoModel from "./todoModel"
+import {observable,action,computed} from 'mobx';
+//import {observer} from 'mobx-react';
+import {TodoFooter,TodoFooterNoData} from "../../components/modtodolist/todoFooter.js";
+import Todo from "../../components/modtodolist/todo.js";
+import TodoModel from "./todoModel.js";
+//import Todo from "./todo.js";
 
 //@observer
 class TodoStore {
-    
+    @observable isLoading=true
      todoId = 0;
     @observable listOfTodos=[]; 
     @observable todoFooterState="all";
     
-    
-    
+   @action.bound
+    jsonDataTodoList(jsonData){
+        let updatedListOfTodos = this.listOfTodos.slice(0);
+        jsonData.forEach((EachItem)=>{
+            const todoModel=new TodoModel({id:EachItem.id, todo:EachItem.title, todoCheckStatus:EachItem.completed});
+            updatedListOfTodos.push(todoModel);
+        });
+        this.listOfTodos=updatedListOfTodos;
+        this.isLoading=false;
+    }
     
     @action.bound addTodoToTodosList(event){
         if (event.key === "Enter" && event.target.value != "") {
@@ -28,10 +37,10 @@ class TodoStore {
     }
     
     @action.bound removeTodo(eachObj){
+        console.log(eachObj)
         let dupList = this.listOfTodos.slice(0);
-
-         dupList=this.listOfTodos.filter(item=>item.id!==eachObj.id);
-        this.listOfTodos= dupList;
+         let dupList1=dupList.filter(item=>item.id!==eachObj.id);
+        this.listOfTodos= dupList1;
     }
     
      @action.bound allTodos(){
@@ -51,16 +60,20 @@ class TodoStore {
     }
     
     
-  @computed get renderTodosList(){
+    @computed get renderTodosList(){
         let dupList = this.listOfTodos.slice(0);
         let newbtn = this.todoFooterState;
+        let newDupList; 
         switch (newbtn) {
             case "all":
-                return dupList
+                return newDupList = dupList.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo} />);
             case "active":
-                return dupList.filter((eachEl => eachEl.todoCheckStatus === false));
+                let dupList1 = dupList.filter((eachEl => eachEl.todoCheckStatus === false));
+                return newDupList = dupList1.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo}/>);
+                
             case "completed":
-                return dupList.filter((eachEl => eachEl.todoCheckStatus === true));
+                let dupList2 = dupList.filter((eachEl => eachEl.todoCheckStatus === true));
+                return newDupList = dupList2.map((eachtodo) => <Todo key={eachtodo.id} eachObj={eachtodo} checkTodo={eachtodo.checkTodo} checkStatus={this.todoCheckedOrNot} removeTodo={this.removeTodo}/>);
         }
     }
     
@@ -82,24 +95,19 @@ class TodoStore {
   
   @computed
   get todosCount(){
-      return this.listOfTodos.length; 
+      return this.listOfTodos.length     
   }
-  
+    
   
     @action.bound todosFooter () {
         if ( this.todosCount> 0)
-            return (<TodoFooter numOfTodos={this.numberOfItems} allTodos={this.allTodos} active={this.active} completed={this.completed} clearCompleted={this.clearCompleted} numOfCompletedTodos={this.clearCompletedCount}/>);
+            return <TodoFooter numOfTodos={this.numberOfItems} allTodos={this.allTodos} active={this.active} completed={this.completed} clearCompleted={this.clearCompleted} numOfCompletedTodos={this.clearCompletedCount}/>;
+        else if(!this.isLoading)
+            return <TodoFooterNoData/>
     }
-    
-    
-addTodoReaction=reaction(()=>this.listOfTodos.map(item=>item.todo),
-    (value)=>{
-     console.log("listOfTodos",value); 
-    })
-    
-    
+  
+        
 }
-
 
 
 const TodoStores=new TodoStore();

@@ -7,6 +7,9 @@ import {observable} from "mobx";
 
 
 
+
+
+
 class Page3 extends React.Component{
   render(){
     return(

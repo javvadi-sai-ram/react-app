@@ -3,7 +3,8 @@ import {observable} from 'mobx';
 
 
 class Themestore{ 
-    @observable boolForColorMode
+    @observable boolForColorMode;
+    
     constructor(){
         this.boolForColorMode=true;
     }

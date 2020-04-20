@@ -1,0 +1,74 @@
+[
+  {
+    "cellWidth": 64,
+    "hiddenCellCount": 3,
+    "gridWidth": 300 
+  },
+  {
+    "cellWidth": 64,
+    "hiddenCellCount": 3,
+    "gridWidth": 300 
+  },
+  
+  {
+    "cellWidth": 64,
+    "hiddenCellCount": 3,
+    "gridWidth": 300 
+  },
+  
+  {
+    
+    "cellWidth": 90,
+    "hiddenCellCount": 3,
+    "gridWidth": 300 
+  },
+  {
+    
+    "cellWidth":60,
+    "hiddenCellCount": 4,
+    "gridWidth": 300 
+  },
+  {
+    
+    "cellWidth": 60,
+    "hiddenCellCount": 5,
+    "gridWidth": 350 
+  },
+  {
+    
+    "cellWidth": 50,
+    "hiddenCellCount": 6,
+    "gridWidth": 370 
+  },
+  {
+    "gridSize": 7,
+    "cellWidth": 50,
+    "hiddenCellCount": 7,
+    "gridWidth": 440 
+  },
+  {
+    "gridSize": 8, 
+    "cellWidth": 50,
+    "hiddenCellCount": 8, 
+    "gridWidth": 480 
+  },
+  {
+    "gridSize": 9, 
+    "cellWidth": 50,
+    "hiddenCellCount": 9,
+    "gridWidth": 570 
+  },
+  {
+    "gridSize": 9, 
+    "cellWidth": 45,
+    "hiddenCellCount": 9,
+    "gridWidth": 550 
+  },
+  {
+    "gridSize": 9, 
+    "cellWidth": 35,
+    "hiddenCellCount": 9,
+    "gridWidth": 600 
+  }
+  
+]

@@ -13,8 +13,9 @@ import EventApp from "./components/EventList/EventApp";
 import "./App.css";
 import themeStore from "./stores/ThemeStore/themeStore";
 import GridMemoryGame from "./components/GridGame/GridMemory/index";
+import {observer} from "mobx-react"
 
-
+@observer
 class App extends React.Component{
   
   getCurrentTheme=()=>{
@@ -42,7 +43,7 @@ class App extends React.Component{
             <CountrydashBoardApp lightMode={this.lightMode} boolForColorMode={this.getCurrentTheme()} />
           </Route>
           <Route path="/GridGameApp">
-            <GridMemoryGame/>
+            <GridMemoryGame lightMode={this.lightMode} boolForColorMode={this.getCurrentTheme()}/>
           </Route>
           
           <Route path="/goToCountryCard">
