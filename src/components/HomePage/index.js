@@ -25,6 +25,8 @@ function App() {
         <Link to="/todo">Todos App</Link>
         <Link to="/EventList">Event App</Link>
         <Link to="/GridGameApp">GridGame App</Link>
+        <Link to="/userPage">UsersPage App</Link>
+        <Link to="/TodoNetWork">TodoNetWork App</Link>
       </header>
     </div>
   );

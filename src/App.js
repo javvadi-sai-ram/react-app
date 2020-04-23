@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
 import {CountrydashBoardApp} from "./components/countryData/countrydashBoardApp.js";
 import CountryCard from "./components/countryData/countryCard.js";
-import Todo from './components/modtodolist/todolist';
+import TodoList from './components/modtodolist/todolist';
 import EmojiGame from "./components/EmojiGame/EmojiGame/EmojiGame.js";
 import CounterPage from "./components/CounterPage/index";
 import CounterDashboard from "./components/CounterPage/CounterDashboard.js";
@@ -13,7 +13,11 @@ import EventApp from "./components/EventList/EventApp";
 import "./App.css";
 import themeStore from "./stores/ThemeStore/themeStore";
 import GridMemoryGame from "./components/GridGame/GridMemory/index";
-import {observer} from "mobx-react"
+import {observer,Provider} from "mobx-react";
+import UsersPage from "./components/userPage/index";
+import stores from "./stores";
+import TodoListNetWork from "./components/todolistNetwork/todolistNet";
+
 
 @observer
 class App extends React.Component{
@@ -29,6 +33,7 @@ class App extends React.Component{
    
   render(){
   return (
+    <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
       <Route exact path="/counter-page">
@@ -56,17 +61,22 @@ class App extends React.Component{
             <CounterDashboard/>
           </Route>
            <Route path="/todo">
-            <Todo />
+            <TodoList />
           </Route>
           <Route path="/EventList">
             <EventApp />
           </Route>
+          <Route path="/userPage" component={UsersPage}/>
+          <Route path="/TodoNetWork" component={TodoListNetWork}/>
+          
+
           
       <Route exact path="/">
             <HomePage />
           </Route>
       </Switch>
     </Router>
+    </Provider>
   );
 }
 }

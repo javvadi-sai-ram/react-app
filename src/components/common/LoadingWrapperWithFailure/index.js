@@ -16,25 +16,25 @@ class LoadingWrapperWithFailure extends React.Component {
       renderSuccessUI: RenderSuccessUI,
       onRetryClick,
       apiError,
-    } = this.props
-    const errorMessage = getUserDisplayableErrorMessage(apiError)
+    } = this.props;
+    const errorMessage = getUserDisplayableErrorMessage(apiError);
 
     switch (apiStatus) {
       case API_FETCHING:
-        return <LoadingView />
+        return <LoadingView />;
       case API_SUCCESS:
-        return <RenderSuccessUI />
+        return <RenderSuccessUI />;
       case API_FAILED:
         return (
           <FailureView
             onRetryClick={onRetryClick}
             errorMessage={errorMessage}
           />
-        )
+        );
       default:
-        return null
+        return null;
     }
   }
 }
 
-export default LoadingWrapperWithFailure
+export default LoadingWrapperWithFailure;
