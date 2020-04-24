@@ -22,7 +22,7 @@ class GridMemoryGame extends React.Component{
         return(
             <TotalGameColor SelectedTheme={this.props.boolForColorMode}>
             <Header lightMode={this.props.lightMode} boolForColorMode={this.props.boolForColorMode} toplevel={gameStore.toplevel} level={gameStore.level}/>
-            {gameStore.cells===6?<DisplayResult level={gameStore.level} onPlayAgainClick={this.onPlayAgainClick}/>:(gameStore.currentLevelGridCells.length>0)?<GameField boolForColorMode={this.props.boolForColorMode} key={gameStore.currentLevelGridCells[0].id}/>:null}
+            {gameStore.cells===9?<DisplayResult level={gameStore.level} onPlayAgainClick={this.onPlayAgainClick}/>:(gameStore.currentLevelGridCells.length>0)?<GameField boolForColorMode={this.props.boolForColorMode} key={gameStore.currentLevelGridCells[0].id}/>:null}
             </TotalGameColor>
             );
     }

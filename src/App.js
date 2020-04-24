@@ -17,6 +17,8 @@ import {observer,Provider} from "mobx-react";
 import UsersPage from "./components/userPage/index";
 import stores from "./stores";
 import TodoListNetWork from "./components/todolistNetwork/todolistNet";
+import LoginPage from "./components/LoginPage";
+
 
 
 @observer
@@ -32,6 +34,7 @@ class App extends React.Component{
   
    
   render(){
+   
   return (
     <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
@@ -60,7 +63,7 @@ class App extends React.Component{
           <Route path="/counter-game">
             <CounterDashboard/>
           </Route>
-           <Route path="/todo">
+           <Route path="/todo">   
             <TodoList />
           </Route>
           <Route path="/EventList">
@@ -68,9 +71,8 @@ class App extends React.Component{
           </Route>
           <Route path="/userPage" component={UsersPage}/>
           <Route path="/TodoNetWork" component={TodoListNetWork}/>
-          
-
-          
+          <Route exact path="/LoginPage"component={LoginPage}/>
+        
       <Route exact path="/">
             <HomePage />
           </Route>

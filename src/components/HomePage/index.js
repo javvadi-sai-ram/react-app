@@ -1,8 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
+import {Redirect} from "react-router-dom";
+import {getAccessToken} from "../../utils/StorageUtils"
 
-function App() {
+
+
+
+
+class App extends React.Component{
+  
+  
+  gotoGridScreenIfLoggedIn=()=>{
+    return (
+      <Redirect
+      to={{
+        pathname:"/GridGameApp"
+      }}
+      />
+      );
+  }
+
+  
+
+render(){
+  const token=getAccessToken()
+     if(token==="1234"){
+      return this.gotoGridScreenIfLoggedIn();
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -27,9 +52,11 @@ function App() {
         <Link to="/GridGameApp">GridGame App</Link>
         <Link to="/userPage">UsersPage App</Link>
         <Link to="/TodoNetWork">TodoNetWork App</Link>
+        <Link to="/LoginPage">LoginPage App</Link>
       </header>
     </div>
   );
+}
 }
 
 export default App;
