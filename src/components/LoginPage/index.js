@@ -4,7 +4,8 @@ import styled from "@emotion/styled";
 import {Redirect,withRouter} from "react-router-dom";
 import {observable,action} from "mobx"
 import {observer} from "mobx-react";
-import {setAccessToken} from "../../utils/StorageUtils"
+import {setAccessToken,clearUserSession} from "../../utils/StorageUtils"
+
 
 const LoginPageDiv=styled.div`${tw`flex justify-center items-center flex-col h-screen`}`
 const UserName=styled.input`${tw`border border-black w-36 h-10 m-3`}`;
@@ -13,14 +14,16 @@ const LoginButton=styled.input`${tw`border border-black text-black m-3 w-24 p-2 
 
 @observer
 class LoginPage extends React.Component{
-        @observable isClicked=false;
         
     
   
     isClickedMethod=()=>{
-        setAccessToken(1234)
+        setAccessToken(12345)
        this.props.history.replace("/");
        
+    }
+    componentWillUnmount(){
+        return clearUserSession();
     }
     
     render(){

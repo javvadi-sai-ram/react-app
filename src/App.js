@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
@@ -18,8 +18,9 @@ import UsersPage from "./components/userPage/index";
 import stores from "./stores";
 import TodoListNetWork from "./components/todolistNetwork/todolistNet";
 import LoginPage from "./components/LoginPage";
-
-
+import routes from "./Authentication/routes/signInRouter.js";
+import ProductRouter from "./EcommerceApp/routes/ProductRouter";
+import productStore from "./EcommerceApp/stores";
 
 @observer
 class App extends React.Component{
@@ -34,11 +35,12 @@ class App extends React.Component{
   
    
   render(){
-   
   return (
-    <Provider {...stores}>
+    <Provider {...stores} {...productStore} >
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
+      {routes}
+      {ProductRouter}
       <Route exact path="/counter-page">
           <Page1 />
         </Route>

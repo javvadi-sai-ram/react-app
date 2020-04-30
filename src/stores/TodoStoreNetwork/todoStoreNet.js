@@ -1,5 +1,5 @@
 import React from "react";
-import {bindPromiseWithOnSuccess} from "@ib/mobx-promise"
+import {bindPromiseWithOnSuccess} from "@ib/mobx-promise";
 import {API_INITIAL} from "@ib/api-constants";
 
 import {observable,action,computed} from 'mobx';

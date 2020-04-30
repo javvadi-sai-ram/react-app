@@ -25,7 +25,7 @@ class App extends React.Component{
 
 render(){
   const token=getAccessToken()
-     if(token==="1234"){
+     if(token==="12345"){
       return this.gotoGridScreenIfLoggedIn();
   }
   return (
@@ -43,7 +43,10 @@ render(){
         >
           Learn React
         </a>
+        
         <Link to="/page-1">Page 1</Link>
+        <Link to="/SignInForm">E-commerceApp</Link>
+        <Link to="/LoginPage">LoginPage App</Link>
         <Link to="/countrydashBoardApp">Country App</Link>
         <Link to="/emozi-game">Emoji App</Link>
         <Link to="/counter-game">Counter App</Link>
@@ -52,7 +55,7 @@ render(){
         <Link to="/GridGameApp">GridGame App</Link>
         <Link to="/userPage">UsersPage App</Link>
         <Link to="/TodoNetWork">TodoNetWork App</Link>
-        <Link to="/LoginPage">LoginPage App</Link>
+        
       </header>
     </div>
   );
