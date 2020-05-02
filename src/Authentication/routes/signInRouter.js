@@ -6,7 +6,7 @@ import {SIGN_IN_PATH} from "../constants/APIConstants";
 
 const routes = [
  
-  <Route path={SIGN_IN_PATH} component={SignInForm} />
+  <Route path={SIGN_IN_PATH} key={SIGN_IN_PATH} component={SignInForm} />
 ];
 
 

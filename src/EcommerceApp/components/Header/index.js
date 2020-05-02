@@ -2,21 +2,22 @@ import React from "react";
 import ProductSort from "../productsort";
 import tw from "tailwind.macro";
 import styled from "@emotion/styled";
-import {clearUserSession} from "../../utils/StorageUtils.js";
-import {withRouter} from "react-router-dom"
+
+import {withRouter} from "react-router-dom";
+import AuthStore from "../../../Authentication/stores/AuthStore";
 
 const Headers=styled.div`${tw`flex justify-around mt-4 mb-6`}`;
-const SignOut=styled.button`${tw`border border-black bg-black text-white text-sm ml-2 p-2 rounded mt-4`}`
+const SignOut=styled.button`${tw`border border-black bg-black text-white text-sm ml-2 p-2 rounded mt-4`}`;
 
 
 class Header extends React.Component{
     
     ProductSortSize=(event)=>{
-        this.props.productStore.onChangeSortBy(event.target.value)
+        this.props.productStore.onChangeSortBy(event.target.value);
     }
     
     signOutPage=()=>{
-        clearUserSession();
+        AuthStore.userSignOut
         const {history}=this.props;
         history.replace({pathname:("/SignInForm")});
     }

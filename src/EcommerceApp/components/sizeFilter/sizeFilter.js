@@ -22,7 +22,7 @@ class SizeFilter extends React.Component{
         const {productStore}=this.props
         return(
           productStore.getFilterSizes.map(item=>{
-              return <EachFilterSize EachItem={item}/>
+              return <EachFilterSize key={item} EachItem={item}/>
           })
        )
     }

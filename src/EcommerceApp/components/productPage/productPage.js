@@ -4,6 +4,8 @@ import ProductLists from "../productList/productList";
 import Header from "../Header";
 import LoadingWrapperWithFailure from "../../../common/LoadingWrapperWithFailure";
 
+
+
 import SizeFilter from "../sizeFilter/sizeFilter";
 import ProductCart from "../Cart/productCart/productCart"
 
@@ -38,7 +40,8 @@ class ProductPage extends React.Component{
     }
     
     doNetWorkCalls=()=>{
-        this.props.productStore.getProductList();
+       this.props.productStore.getProductList();
+       
     }
     
     

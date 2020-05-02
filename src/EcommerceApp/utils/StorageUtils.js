@@ -14,12 +14,15 @@ function setCookie(key, value) {
 }
 
 export function getAccessToken() {
+  
   return getCookie(ACCESS_TOKEN)
 }
 export function setAccessToken(accessToken) {
-  setCookie(ACCESS_TOKEN, accessToken)
+  setCookie(ACCESS_TOKEN, accessToken);
+  console.log(getAccessToken())
 }
 
 export function clearUserSession() {
-  Cookie.remove(ACCESS_TOKEN, { path: '/' })
+  Cookie.remove(ACCESS_TOKEN, { path: '/' });
+  console.log(getAccessToken());
 }
