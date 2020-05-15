@@ -1,44 +1,53 @@
-import React from "react"
+import React, { Component } from "react";
+import { render } from "react-dom";
+import { inject, Provider, observer } from "mobx-react";
+import { observable, action } from "mobx";
 
-class CustomTextInput extends React.Component {
+@inject("appStore")
+@observer
+class Message extends Component {
+  message;
   constructor(props) {
     super(props);
-
-    this.textInput = null;
-
-    this.setTextInputRef = element => {
-      this.textInput = element;
-    };
-
-    this.focusTextInput = () => {
-      // Focus the text input using the raw DOM API
-      if (this.textInput) this.textInput.focus();
-    };
+    this.message = this.props.appStore.message;
   }
 
-  componentDidMount() {
-    // autofocus the input on mount
-    this.focusTextInput();
-  }
+  onChangeTitle = () => {
+    const { onChangeTitle } = this.props.appStore;
+    onChangeTitle("Hi");
+  };
 
   render() {
-    // Use the `ref` callback to store a reference to the text input DOM
-    // element in an instance field (for example, this.textInput).
     return (
       <div>
-        <input
-          type="text"
-          ref={this.setTextInputRef}
-        />
-        <input
-          type="button"
-          value="Focus the text input"
-          onClick={this.focusTextInput}
-        />
+        <p>Message title: {this.message.title}</p>
+        <button onClick={this.onChangeTitle}>Change title</button>
       </div>
     );
   }
 }
 
+class App extends Component {
+  render() {
+    return (
+      <Provider appStore={appStore}>
+        <Message />
+      </Provider>
+    );
+  }
+}
 
-export default CustomTextInput
+class AppStore {
+  @observable message = {
+    title: "Hello",
+  };
+
+  @action.bound
+  onChangeTitle(title) {
+    this.message.title = title;
+  }
+}
+
+const appStore = new AppStore();
+
+export default App 

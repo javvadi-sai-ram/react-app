@@ -20,6 +20,7 @@ import {SignInFormEcommerce,SignIn,Password,Button,SignInComment,TotalSignIn,Err
 @observer
 class SignInForm extends React.Component{
     userNameRef=React.createRef();
+    passwordRef=React.createRef();
     componentDidMount(){
      this.userNameRef.current.focus()
     }
@@ -30,15 +31,15 @@ class SignInForm extends React.Component{
             <TotalSignIn>
             <SignInFormEcommerce>
             <SignInComment>Sign in</SignInComment>
-            <SignIn ref={this.userNameRef} type="text" value={userName} onChange={onChangeuserNames} placeholder=" UserName"/>
-            <Password type="password" value={password} onChange={onChangepasswords} placeholder="Password"/>
+            <SignIn ref={this.userNameRef} type="text" value={userName} onChange={onChangeuserNames}  placeholder=" UserName"/>
+            <Password ref={this.passwordRef} type="password" value={password} onChange={onChangepasswords} placeholder="Password"/>
             <Button onClick={getCookieValue} disabled={authStore.getUserSignInAPIStatus===100?true:false}>
             {authStore.getUserSignInAPIStatus===100?<Loader type="Oval" color="#00BFFF" height={25} width={25} />:"Sign In"}
             </Button>
             {authStore.getUserSignInAPIStatus===200&&redirectPager()}
             <ErrorMessage>{errorMessage}</ErrorMessage>
             </SignInFormEcommerce>
-            <DisplayMess>g</DisplayMess>
+            <DisplayMess></DisplayMess>
             </TotalSignIn>
             );
     }

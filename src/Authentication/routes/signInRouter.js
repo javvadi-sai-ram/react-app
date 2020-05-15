@@ -13,6 +13,10 @@ class SignInRoute extends React.Component{
     @observable userName;
     @observable password;
     @observable errorMessage;
+    
+    
+    SignInFormRef=React.createRef();
+    
     constructor(){
         super();
         this.userName="";
@@ -41,22 +45,28 @@ class SignInRoute extends React.Component{
     
     @action.bound
      async getCookieValue(){
-      if(this.userName!==""&&this.password!==""){
+         event.preventDefault()
+      if((this.userName!==""||this.userName===undefined)&&(this.password!==""||this.password===undefined)){
+          this.errorMessage="";
            this.getToken();
 
       }
-      if(this.userName===""){
+       
+      if(this.userName===""||this.userName===undefined){
           this.errorMessage="Please enter username";
+          this.SignInFormRef.current.userNameRef.current.focus()
+
       }
-      else if(this.password===""){
+      else if(this.password===""||this.password===undefined){
+          this.SignInFormRef.current.passwordRef.current.focus()
           this.errorMessage="Please enter password";
+          
       }
+      
       if(!window.navigator.onLine){
           this.errorMessage="Network error";
       }
-      if(this.errorMessage==="Please enter password"){
-          
-      }
+      
     }
     
     redirectPager=()=>{
@@ -95,7 +105,7 @@ class SignInRoute extends React.Component{
             onChangeuserNames={this.onChangeuserNames}
             redirectPager={this.redirectPager}    
             getCookieValue={this.getCookieValue}
-
+            ref={this.SignInFormRef}
             />
             );
     }
