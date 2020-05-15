@@ -89,7 +89,7 @@ class ProductStore{
     @action.bound
     onSelectSize(event){
         let FindingSizeFilters=this.sizeFilter.find(each=>each===event);
-        if(FindingSizeFilters===undefined){
+        if(FindingSizeFilters===undefined){  
             this.sizeFilter.push(event);
         }
         else{
@@ -117,7 +117,6 @@ class ProductStore{
             case "Decending":
                 return products.sort((a,b)=>b.price-a.price);
         }
-        
     }
     
     @action.bound

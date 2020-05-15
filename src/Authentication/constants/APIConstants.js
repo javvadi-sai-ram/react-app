@@ -5,4 +5,4 @@ export const apiMethods = {
 
 
 
-export const SIGN_IN_PATH = "/SignInForm";
+export const SIGN_IN_PATH = "/SignIn";

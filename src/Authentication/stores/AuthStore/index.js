@@ -1,7 +1,7 @@
 import {observable,action} from "mobx";
 import {API_INITIAL} from "@ib/api-constants";
 import {bindPromiseWithOnSuccess} from "@ib/mobx-promise";
-import {setAccessToken} from "../../utils/StorageUtils";
+import {setAccessToken} from "../../../EcommerceApp/utils/StorageUtils";
 import {clearUserSession} from "../../../EcommerceApp/utils/StorageUtils.js";
 
 
@@ -9,6 +9,7 @@ class AuthStore{
     
     @observable getUserSignInAPIStatus;
     @observable getUserSignInAPIError;
+    
     authAPIService;
     authAPI;
     
@@ -36,7 +37,7 @@ class AuthStore{
     }
   
   @action.bound  
-    setUserSignInAPIError(error){
+    setUserSignInAPIError(error){  
         this.getUserSignInAPIError=error;
     }
     
@@ -44,7 +45,6 @@ class AuthStore{
     
   @action.bound
     userSignIn(){
-        
         const AuthPromise=this.authAPIService.signInAPI();
         return bindPromiseWithOnSuccess(AuthPromise)
         .to(this.setUserSignInAPIStatus,this.setUserSignInAPIResponse)
@@ -52,9 +52,8 @@ class AuthStore{
     }
     
     
-    
+    @action.bound
     userSignOut(){
-        alert()
         clearUserSession();
     }
 }

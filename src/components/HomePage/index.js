@@ -45,7 +45,8 @@ render(){
         </a>
         
         <Link to="/page-1">Page 1</Link>
-        <Link to="/SignInForm">E-commerceApp</Link>
+        <Link to="/SignIn">E-commerceApp</Link>
+        <Link to="/MCQBITS">MCQBITS</Link>
         <Link to="/LoginPage">LoginPage App</Link>
         <Link to="/countrydashBoardApp">Country App</Link>
         <Link to="/emozi-game">Emoji App</Link>

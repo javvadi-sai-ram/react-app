@@ -8,6 +8,7 @@ import CountryCard from "./components/countryData/countryCard.js";
 import TodoList from './components/modtodolist/todolist';
 import EmojiGame from "./components/EmojiGame/EmojiGame/EmojiGame.js";
 import CounterPage from "./components/CounterPage/index";
+import MCQBITS from "./components/MCQBITS";
 import CounterDashboard from "./components/CounterPage/CounterDashboard.js";
 import EventApp from "./components/EventList/EventApp";
 import "./App.css";
@@ -18,7 +19,7 @@ import UsersPage from "./components/userPage/index";
 import stores from "./stores";
 import TodoListNetWork from "./components/todolistNetwork/todolistNet";
 import LoginPage from "./components/LoginPage";
-import routes from "./Authentication/routes/signInRouter.js";
+import routes from "./Authentication/routes/routers.js";
 import ProductRouter from "./EcommerceApp/routes/ProductRouter";
 import productStore from "./EcommerceApp/stores";
 
@@ -44,7 +45,9 @@ class App extends React.Component{
       <Route exact path="/counter-page">
           <Page1 />
         </Route>
-        
+        <Route exact path="/MCQBITS">
+          <MCQBITS />
+        </Route>
             <Route exact path="/page-1">
           <Page1 />
         </Route>

@@ -21,16 +21,17 @@ const ProductList=styled.div`${tw`flex flex-wrap`}`
 @observer
 class ProductLists extends React.Component{
     renderProductList=()=>{
+        const {cartStore,productStore}=this.props
         return(
             this.props.list.map(item=>{
-            return <Product key={item.productId} eachItem={item} onClickAddToCart={this.onClickAddToCart}/>;
+            return <Product cartStore={cartStore} key={item.productId} eachItem={item} onClickAddToCart={this.onClickAddToCart}/>;
             })
             );
     }
     
     render(){
 
-        const {productStore}=this.props
+        const {cartStore,productStore}=this.props
         return(
             <ProductList>
             {this.renderProductList()}

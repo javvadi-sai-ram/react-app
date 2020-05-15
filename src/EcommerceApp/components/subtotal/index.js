@@ -1,15 +1,11 @@
 import React from "react";
-import tw from "tailwind.macro";
-import styled from "@emotion/styled";
-import CheckOutButton from "../checkOutButton"
 
-const SubTotalAndAmount=styled.div`${tw`flex justify-between`}`
-const SubTotals=styled.div`${tw`text-yellow-800`}`;
-const Amount=styled.div`${tw``}`;
-const CheckoutButtons=styled.div`${tw`flex justify-center`}`
+import CheckOutButton from "../checkOutButton";
+import {SubTotalAndAmount,SubTotals,Amount,CheckoutButtons} from "./styledComponent.js";
 
 class SubTotal extends React.Component{
     render(){
+        const {cartStore}=this.props
         return(
         <div>    
             <SubTotalAndAmount>
@@ -21,7 +17,7 @@ class SubTotal extends React.Component{
               </Amount>
             </SubTotalAndAmount>
             <CheckoutButtons>
-                <CheckOutButton amount={this.props.cartStoreAmount}/>
+                <CheckOutButton cartStore={cartStore} amount={this.props.cartStoreAmount}/>
             </CheckoutButtons>
         </div>
             );

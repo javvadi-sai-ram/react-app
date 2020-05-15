@@ -4,6 +4,7 @@ import CartModel  from "./cartModel";
  
  class CartStore{
     @observable cartProductList;
+    @observable count=0
     
     constructor(){
      this.init();
@@ -14,15 +15,7 @@ import CartModel  from "./cartModel";
      this.cartProductList=[];
     }
     
-    
-    
-    
-    
-       
-       
-       
-       
-    
+
     @action.bound
     onClickAddToCart(item){
           let cartProducts=this.cartProductList.slice(0);
@@ -30,6 +23,7 @@ import CartModel  from "./cartModel";
           if(FindObject===undefined){
            const cartModel=new CartModel({
            productId:item.productId,
+           count:this.count++,
            currencyFormat:item.currencyFormat,
            currencyId:item.currencyId,
            price:item.price,
@@ -40,9 +34,9 @@ import CartModel  from "./cartModel";
           cartProducts.push(cartModel);
           }
           else{
-              FindObject.incrementQuantity()
+              FindObject.incrementQuantity();
           }
-          console.log(cartProducts)
+ 
           this.cartProductList=cartProducts;
     }
     
@@ -53,20 +47,19 @@ import CartModel  from "./cartModel";
     }
     
     clearCart(){
-     alert('Your Orders Will Be Delivered In 3 days');
-        this.init()
+     const a=confirm("Would you like to confirm");
+     if(a){
+     alert("Thank you for shopping with us 😊.Your products will be delivered in 3 days to the address mentioned in your profile");
+        this.init();
+     }
     }
     
-    getProductDetailsById(){
-     
-     
-    }
-    
+   
     @computed get totalCartAmount(){
-     let subTotal=0
+     let subTotal=0;
      this.cartProductList.map(item=>{
          subTotal=subTotal+item.quantity*item.price;
-     })
+     });
      
      return subTotal.toFixed(2);
     }
@@ -76,7 +69,7 @@ import CartModel  from "./cartModel";
        let NoOfItems=0;
        this.cartProductList.map(item=>{
          NoOfItems=NoOfItems+item.quantity;
-     })
+     });
      return NoOfItems;
     }
  }

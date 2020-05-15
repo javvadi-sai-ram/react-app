@@ -1,11 +1,11 @@
 import React from "react";
-import tw from "tailwind.macro";
-import styled from "@emotion/styled";
+
 import {observer,inject} from "mobx-react";
 
-const CheckOutButtons=styled.input`${tw`border border-white w-32 p-4 m-2 text-center`}`
+import {CheckOutButtons} from "./styledComponent.js";
 
-@inject('cartStore')
+//@inject('cartStore')
+@observer
 class CheckOutButton extends React.Component{
     onCheckOut=()=>{
         this.props.cartStore.clearCart();

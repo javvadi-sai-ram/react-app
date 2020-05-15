@@ -1,17 +1,11 @@
 import React from "react";
-import tw from "tailwind.macro";
-import styled from "@emotion/styled";
 import {observable} from "mobx";
 import {observer,inject} from "mobx-react";
 import EachFilterSize from "./eachFilterSize"
-const SizeFilters=styled.div`${tw`text-xl`}
-`;
-const TotalTextSize=styled.div`${tw`m-2 text-xl font-medium`}
-`;
+import {SizeFilters,TotalTextSize,EachFilter} from "./styledComponent.js"
 
 
-
-@inject('productStore')
+//@inject('productStore')
 @observer
 class SizeFilter extends React.Component{
     filterShopping=(event)=>{
@@ -19,10 +13,10 @@ class SizeFilter extends React.Component{
     }
     
     renderSize=()=>{
-        const {productStore}=this.props
+        const {productStore,cartStore}=this.props
         return(
           productStore.getFilterSizes.map(item=>{
-              return <EachFilterSize key={item} EachItem={item}/>
+              return <EachFilterSize cartStore={cartStore} productStore={productStore} key={item} EachItem={item}/>
           })
        )
     }

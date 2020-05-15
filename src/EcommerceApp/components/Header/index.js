@@ -1,15 +1,14 @@
 import React from "react";
 import ProductSort from "../productsort";
-import tw from "tailwind.macro";
-import styled from "@emotion/styled";
 
-import {withRouter} from "react-router-dom";
-import AuthStore from "../../../Authentication/stores/AuthStore";
+import {observer} from "mobx-react";
+import {withRouter,Redirect} from "react-router-dom";
+import authStore from "../../../Authentication/stores";
 
-const Headers=styled.div`${tw`flex justify-around mt-4 mb-6`}`;
-const SignOut=styled.button`${tw`border border-black bg-black text-white text-sm ml-2 p-2 rounded mt-4`}`;
+import {Headers,SignOut} from "./styledComponent.js";
 
 
+@observer
 class Header extends React.Component{
     
     ProductSortSize=(event)=>{
@@ -17,24 +16,30 @@ class Header extends React.Component{
     }
     
     signOutPage=()=>{
-        AuthStore.userSignOut
+        authStore.userSignOut()
         const {history}=this.props;
-        history.replace({pathname:("/SignInForm")});
+        history.replace({pathname:("/SignIn")});
+        /*return(
+            <Redirect to={{
+            pathname:"/SignIn"
+            }}/>
+            )*/
     }
     renderHeader=()=>{
+        const {cartStore}=this.props
         return(
-            <ProductSort ProductSortSize={this.ProductSortSize}/>
+            <ProductSort ProductSortSize={this.ProductSortSize} cartStore={cartStore}/>
             );
     }
     render(){
-        const productCount=this.props.list;
+        const {productStore}=this.props
         return (
         <div>
             <div>
                  <SignOut onClick={this.signOutPage}>SignOut</SignOut>
             </div>
             <Headers>
-                 <div>products {productCount.length} found </div>
+                 <div>products {productStore.sortedAndFilteredProducts.length} found </div>
             <div>
                  {this.renderHeader()}
             </div>
