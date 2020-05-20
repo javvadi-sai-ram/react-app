@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
-import {CountrydashBoardApp} from "./components/countryData/countrydashBoardApp.js";
+import CountrydashBoardApp from "./components/countryData/countrydashBoardApp.js";
 import CountryCard from "./components/countryData/countryCard.js";
 import TodoList from './components/modtodolist/todolist';
 import EmojiGame from "./components/EmojiGame/EmojiGame/EmojiGame.js";
@@ -22,6 +22,7 @@ import LoginPage from "./components/LoginPage";
 import routes from "./Authentication/routes/routers.js";
 import ProductRouter from "./EcommerceApp/routes/ProductRouter";
 import productStore from "./EcommerceApp/stores";
+import PractiseAdvancedConcepts from "./common/routes/practiseAdvancedConcepts.js";
 
 @observer
 class App extends React.Component{
@@ -42,6 +43,9 @@ class App extends React.Component{
       <Switch>
       {routes}
       {ProductRouter}
+      <Route exact path="/practice-advanced-concepts">
+          <PractiseAdvancedConcepts />
+        </Route>
       <Route exact path="/counter-page">
           <Page1 />
         </Route>

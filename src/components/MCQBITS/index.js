@@ -1,53 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import { render } from "react-dom";
-import { inject, Provider, observer } from "mobx-react";
-import { observable, action } from "mobx";
+import { observer } from "mobx-react";
+import { observable ,action} from "mobx";
 
-@inject("appStore")
+class AuthStore {
+  @observable isSignedIn = false;
+
+ @action.bound
+  onChange() {
+    console.log("onChange isSignedIn");
+    this.isSignedIn = !this.isSignedIn;
+  }
+}
+
+const authStore = new AuthStore();
+
 @observer
-class Message extends Component {
-  message;
-  constructor(props) {
-    super(props);
-    this.message = this.props.appStore.message;
+class SignInButton extends React.Component {
+  onChange() {
+    const { onChange } = authStore;
+    onChange();
   }
-
-  onChangeTitle = () => {
-    const { onChangeTitle } = this.props.appStore;
-    onChangeTitle("Hi");
-  };
-
   render() {
-    return (
-      <div>
-        <p>Message title: {this.message.title}</p>
-        <button onClick={this.onChangeTitle}>Change title</button>
-      </div>
-    );
+    const { isSignedIn } = authStore;
+    console.log("isSignedIn:", isSignedIn);
+
+    return <button onClick={this.onChange}>Sign In</button>;
   }
 }
 
-class App extends Component {
-  render() {
-    return (
-      <Provider appStore={appStore}>
-        <Message />
-      </Provider>
-    );
-  }
-}
-
-class AppStore {
-  @observable message = {
-    title: "Hello",
-  };
-
-  @action.bound
-  onChangeTitle(title) {
-    this.message.title = title;
-  }
-}
-
-const appStore = new AppStore();
-
-export default App 
+export default SignInButton 

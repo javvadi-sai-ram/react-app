@@ -18,6 +18,7 @@ class Header extends React.Component{
     signOutPage=()=>{
         authStore.userSignOut()
         const {history}=this.props;
+        this.props.productStore.init()
         history.replace({pathname:("/SignIn")});
         /*return(
             <Redirect to={{

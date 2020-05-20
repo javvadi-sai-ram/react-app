@@ -34,9 +34,9 @@
     "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css react-scripts build",
     "test": "react-scripts test",
-    "coverage":"react-app-rewired test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
+    "coverage": "react-app-rewired test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "js:start":"npm run watch:css & react-app-rewired start",
+    "js:start": "npm run watch:css & react-app-rewired start",
     "js:test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
     "js:build": "npm run build:css react-app-rewired build",
     "js:eject": "react-app-rewired eject",
@@ -70,9 +70,9 @@
     "react-app-rewired": "2.1.5",
     "tailwindcss": "^1.2.0"
   },
-  "jest":{
-    "testEnvironment":"node",
-    "collectCoverageForm":[
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageForm": [
       "src/*.{ts,tsx,js,jsx}"
     ]
   }

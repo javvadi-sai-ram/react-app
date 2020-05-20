@@ -1,86 +1,100 @@
+
 import React from "react";
-/*global fetch*/
 import DisplayCountriesAll from "./displayCountries.js";
 import "./countries.css";
 import {Heading} from "./heading.js";
 import {FilterRegion} from "./selectedregion.js";
 import {CountryFilterBar} from "./countryFilterBar.js";
 //import {CountryCard} from "./countryCard.js"
+import WithCountries from "./Hoc/withCountries";
 
-
-
-
-
-const continent=["All","Americas","Asia","Europe","Oceania"];
-
-
+let regex="";
+let region;
+let continents;
+let filteredData;
+const continent=["All","Americas","Asia","Africa","Europe","Oceania"];
 class CountrydashBoardApp extends React.Component{
-    state={
-        bool:false,
-        countryData:[],
-        countryData1:[],
-        countryData2:[],
-        value:"",
-        
-    }
-    
-    
+             state={
+                       bool:false,
+                       countryData:[],
+                       countryData1:[],
+                       countryData2:[],
+                       value:"",
+                        }
     componentDidMount(){
-        fetch("https://restcountries.eu/rest/v2/all")
-  .then(response => response.json())
-  .then(jsonData=>{this.getCountries(jsonData)});
+        this.getCountries();
     }
-    getCountries=(jsonData)=>{
-        this.setState({
-            bool:true,
-            countryData:jsonData,
-            countryData1:jsonData,
-            countryData2:jsonData,
-        });
+    getCountries=()=>{
+        
+        const {countriesData}=this.props;
+        this.setState({bool:true,countryData1:countriesData,countryData2:countriesData,countryData:countriesData});
     }
-    
-    
     filterCountriesByRegion=()=>{
        let x=this.state.countryData.slice(0);           
         return(
                 <FilterRegion continent={continent} countryData={x} boolForColorMode={this.props.boolForColorMode} handleOnchangeSelectedRegion={this.handleOnchangeSelectedRegion}/>
         );
     }
-    
-    
     handleOnchangeSelectedRegion=(event)=>{
+    continents=event.target.value;
       if(event.target.value==="All"){
           this.setState({countryData:this.state.countryData1,countryData2:this.state.countryData1});
       }
      if(event.target.value!=="All"){
-         let answer=this.state.countryData1.filter(item=>item.region===event.target.value);
-         this.setState({countryData:answer,countryData2:answer});
-         
+         filteredData=this.state.countryData1.filter(item=>item.region===event.target.value);
+         this.setState({countryData:filteredData,countryData2:filteredData});
+     }
+     if(regex!==""){
+           this.filterCountriesBySearchByregion();
      }
    }
-    formatString=(str) =>{
+   
+       formatString=(str) =>{
       return str
          .replace(/(\B)[^ ]*/g,match =>(match.toLowerCase()))
           .replace(/^[^ ]/g,match=>(match.toUpperCase()));
           } 
-
    
    filterCountriesBySearch=(event)=>{
-        let regions=this.state.countryData2;
+      region=this.state.countryData2.slice(0);
         let xy;
-        let regex=(event.target.value);
-         {xy=this.formatString(regex)}
-        let regex1=(xy);
-        let filter=regions.filter(item=>{
-            if((item.name).includes(regex1)){
+          let value=(event.target.value);
+         xy=this.formatString(value);
+         regex=(xy);
+        let filter=region.filter((item)=>{
+            if((item.name).includes(regex)){
                 return item;
             }
+            return null;
         });                            
         this.setState({countryData:filter});
    }
+   filterCountriesBySearchByregion=()=>{
+      if(continents==="All"){
+          let filter=this.state.countryData1.filter(item=>{
+            if((item.name).includes(regex)){
+                return item;
+            }
+            return null;
+        }); 
+        
+        this.setState({countryData:filter});
+      }
+      else{
+          let filter=filteredData.filter(item=>{
+            if((item.name).includes(regex)){
+                return item;
+            }
+            return null;
+        });
+       this.setState({countryData:filter});
+      }
+   }
+   
    
    
     render(){
+        
         return(
             
                  <div className={this.props.boolForColorMode?"lightMode":"darkMode"}>
@@ -99,8 +113,7 @@ class CountrydashBoardApp extends React.Component{
                 </div>}
                  </div>
             );
-        
     }
 }
 
-export {CountrydashBoardApp};
+export default WithCountries(CountrydashBoardApp);

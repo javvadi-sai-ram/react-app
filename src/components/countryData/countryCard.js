@@ -3,7 +3,7 @@ import React from "react";
 import {withRouter} from "react-router-dom"
 import {Header,ColorForCountryDetails,Backbutton,CountryDetails,BorderCountriesButton} from "./tw&emotion.js";
 import { FaRegMoon } from 'react-icons/fa';
-
+import WithCountries from "./Hoc/withCountries.js"
 
 
 let countryList=[];
@@ -24,13 +24,12 @@ class CountryCard extends React.Component{
         return arr;
     }
    componentDidMount(){
-        fetch("https://restcountries.eu/rest/v2/all")
-  .then(response => response.json())
-  .then(jsonData=>{this.getCountries(jsonData)});
-    }
-    getCountries=(jsonData)=>{
+       this.getCountries()
+   }
+    
+    getCountries=()=>{
         this.setState({
-            countryDataAll:jsonData,
+            countryDataAll:this.props.countriesData,
         });
     }
     
@@ -106,4 +105,4 @@ class CountryCard extends React.Component{
     }
 }
 
-export default withRouter(CountryCard);
+export default withRouter(WithCountries(CountryCard))
