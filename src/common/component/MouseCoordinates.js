@@ -21,7 +21,7 @@ class MouseCoordinates extends React.Component{
     }
 }
 
-
+  
 
 
 @observer
