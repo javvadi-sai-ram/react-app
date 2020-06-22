@@ -7,6 +7,7 @@ import {observer,inject} from "mobx-react";
 import {getAccessToken} from "../utils/StorageUtils";
 import authStore from "../stores";
 
+
 @observer
 class SignInRoute extends React.Component{
      @observable iscompleted=true
@@ -90,13 +91,14 @@ class SignInRoute extends React.Component{
                          />
                   );
         }
-        
+             
     }
     
     
     render(){       
         return(
             <SignInForm
+            
             iscompleted={this.iscompleted}
             userName={this.userName}
             password={this.password}

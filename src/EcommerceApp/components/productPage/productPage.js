@@ -2,7 +2,9 @@ import React from "react";
 import {observer,inject} from "mobx-react";
 import ProductLists from "../productList/productList";
 import Header from "../Header";
+import CookieConsent, { Cookies } from "react-cookie-consent";
 import LoadingWrapperWithFailure from "../../../common/LoadingWrapperWithFailure";
+import Paginations from "../../Pagination"
 
 
 
@@ -41,15 +43,27 @@ class ProductPage extends React.Component{
                </FilterBars>
                <TotalProductList>
                         <LoadingWrapperWithFailure
-                                  apiStatus={this.props.getProductListAPIStatus}
-                                   apiError={this.props.getProductListAPIError}
+                                  apiStatus={this.props.getPMPAPIStatus}
+                                   apiError={this.props.getPMPAPIError}
                                     onRetryClick={this.props.doNetWorkCalls}
                                       renderSuccessUI={this.renderUserList}/>
                 </TotalProductList>
                 <Cart> 
                         <ProductCart cartStore={cartStore}/>
                 </Cart>
+                <CookieConsent
+                            location="bottom"
+                             buttonText="Sure man!!"
+                             cookieName="myAwesomeCookieName2"
+                            style={{ background: "#2B373B" }}
+                             buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+                            expires={150}
+                                >
+                             This website uses cookies to enhance the user experience.{" "}
+                            <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
+                </CookieConsent>
         </MainBar>
+        <Paginations/>
      </div>
         );
     }

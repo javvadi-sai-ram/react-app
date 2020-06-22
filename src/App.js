@@ -23,6 +23,8 @@ import routes from "./Authentication/routes/routers.js";
 import ProductRouter from "./EcommerceApp/routes/ProductRouter";
 import productStore from "./EcommerceApp/stores";
 import PractiseAdvancedConcepts from "./common/routes/practiseAdvancedConcepts.js";
+import Paginations from "./EcommerceApp/Pagination"
+
 
 @observer
 class App extends React.Component{
@@ -50,7 +52,7 @@ class App extends React.Component{
           <Page1 />
         </Route>
         <Route exact path="/MCQBITS">
-          <MCQBITS />
+          <Paginations />
         </Route>
             <Route exact path="/page-1">
           <Page1 />

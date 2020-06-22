@@ -69,16 +69,19 @@ class ProductStore{
  
    @action.bound
    setProductListAPIStatus(apiStatus){
+       alert(apiStatus)
        this.getProductListAPIStatus=apiStatus;
    }
    
    @action.bound
    setProductListAPIError(error){
+       console.log(error)
        this.getProductListAPIError=error;
    }
    
    @action.bound
     getProductList(){
+        alert(2345678909876543)
         const ProductPromise=this.productsAPIService.getProductsAPI();
         return bindPromiseWithOnSuccess(ProductPromise)
         .to(this.setProductListAPIStatus,this.setProductListAPIResponse)
