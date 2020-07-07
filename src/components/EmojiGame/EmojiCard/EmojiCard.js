@@ -2,13 +2,15 @@ import React from "react";
 import {EmojiData,TotalDataEmojis,EmojiImage,EmojisGestureName} from "../EmojiCard/EmojiCardCss.js";
 
 
+
+
 class EmojiCard extends React.Component{
     emojiDataFetch=(emojisDetails)=>{
         let list=emojisDetails.map((item)=>{
-            return <EmojiData key={item.id} onClick={()=>this.props.onEmojiClick(item)} theme={this.props.theme}>
+            return (<EmojiData key={item.id} onClick={()=>this.props.onEmojiClick(item)} theme={this.props.theme}>
                         <EmojiImage src={item.image} alt={item.image}/>
                         <EmojisGestureName theme={this.props.theme}>{item.name}</EmojisGestureName>
-                    </EmojiData>;
+                    </EmojiData>)
         });
         return list;
     }

@@ -9,7 +9,7 @@ class WinOrLose extends React.Component{
     render(){
         let {ScoreUpdate,gameState}=this.props;
         return(
-            <WinOrLoses theme={this.props.theme}>
+            <WinOrLoses color={this.props.theme} theme={this.props.theme}>
             <ScoreUpdates>{ScoreUpdate}</ScoreUpdates>
             <GameState>YOU {gameState}</GameState>
             {gameState==="WON"?
