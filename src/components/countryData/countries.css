@@ -1,162 +1,184 @@
-.sizing-Width{
-    width:200px;
-    height:170px;
-    object-fit: cover;
+.sizing-Width {
+   width: 200px;
+   height: 170px;
+   object-fit: cover;
 }
-.flexing{
-    border:1px solid black;   
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-around;
+.flexing {
+   border: 1px solid black;
+   display: flex;
+   flex-wrap: wrap;
+   /* justify-content: space-around; */
 }
-.letter-sizing-country{
-    width:200px;
+.letter-sizing-country {
+   width: 200px;
 }
-.each-country{
-    border:0px;
-    margin:5px;
-    box-shadow: 2px 2px 2px 2px lightgrey;
-    margin-bottom:50px
+.each-country {
+   box-shadow: 2px 2px 2px 2px lightgrey;
+   margin: 20px;
+   border: 2px solid gray;
+   padding: 10px;
+   height: 350px;
+   width: 200px;
 }
-.country-details{
-    text-align:center;
-    
+.each-country:hover {
+   box-shadow: 2px 2px 2px 2px lightgrey;
+   border: 2px solid red;
+   transform: scale(1, 1.1);
+   transition: 1s;
 }
-.head-flexing{
-    display: flex;
-    justify-content:space-between;
-    padding:10px;
-    box-shadow: 4px 4px 10px 10px lightgrey;
-    margin:3px;
+.country-details {
+   text-align: center;
 }
-.selectedregion-and-searchcountry{
-    padding: 10px;
-    display: flex;
-    justify-content:space-between;
+.head-flexing {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+   box-shadow: 4px 4px 10px 10px lightgrey;
+   margin: 3px;
 }
-.lightMode{
-    background-color: white;
-    color:black;
-    transition-duration:2s;
+.selectedregion-and-searchcountry {
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
 }
-.darkMode{
-    background-color: #003366;
-    color:white;
-    transition-duration:2s;
+.lightMode {
+   background-color: white;
+   color: black;
+   transition-duration: 2s;
 }
-.logo-width{
-    width:40vw;
-    height:50vh;
-    
-    object-fit:cover;
-    margin-top:30px;
+.darkMode {
+   background-color: #003366;
+   color: white;
+   transition-duration: 2s;
 }
-.flexing1{
-    display:flex;
-    border:1px solid black;
+.logo-width {
+   width: 40vw;
+   height: 50vh;
+
+   object-fit: cover;
+   margin-top: 30px;
 }
-.logo{
-    display:flex;
-    width:50%;
-    justify-content:center;
+.flexing1 {
+   display: flex;
+   border: 1px solid black;
 }
-.country-details1{
-    display:flex;
-    flex-direction:column;
-     width:25%;
-    justify-content:center;   
+.logo {
+   display: flex;
+   width: 50%;
+   justify-content: center;
 }
-.country-details2{
-    display:flex;
-    flex-direction:column;
-     width:25%;
-    justify-content:center;   
+.country-details1 {
+   display: flex;
+   flex-direction: column;
+   width: 25%;
+   justify-content: center;
 }
-.backButton{
-    margin:20px;
-    border-radius:5px;
-    background-color: white;
-    height:40px;
+.country-details2 {
+   display: flex;
+   flex-direction: column;
+   width: 25%;
+   justify-content: center;
 }
-.country-buttons{
-    margin:4px;
-    border-radius:5px;
-    background-color: white
+.backButton {
+   margin: 20px;
+   border-radius: 5px;
+   background-color: white;
+   height: 40px;
 }
-.head-flexing1{
-    display: flex;
-    justify-content:space-between;
-    padding:10px;
-    box-shadow: 4px 4px 10px 10px lightgrey;
-    margin:3px;
+.country-buttons {
+   margin: 4px;
+   border-radius: 5px;
+   background-color: white;
+}
+.head-flexing1 {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+   box-shadow: 4px 4px 10px 10px lightgrey;
+   margin: 3px;
 }
 
-.light-Mode-Search-Icon{
-    display: flex;
-    align-items:center;
-    box-shadow: 1px 1px 2px 2px grey;
-   background-color: white;
-    color:grey;
-    height:40px;
-    border:none;
-    border-radius:0px;
-    transition-duration:2s;  
-    margin-bottom:20px;
-    margin-top:20px;
-}
-.dark-Mode-Search-Icon{
-    display: flex;
-    height:40px;
-    border-radius:0px;
+.light-Mode-Search-Icon {
+   display: flex;
+   align-items: center;
    box-shadow: 1px 1px 2px 2px grey;
-    align-items:center;
-    background-color: #003366;
-    color:white;
-     border:none;
-    transition-duration:2s;
-    margin-bottom:20px;
-    margin-top:20px;
-}
-.light-Mode-Select-tag{
    background-color: white;
-    color:black;
-    height:40px;
-    border:none;
-    border-radius:0px;
-    transition-duration:2s;  
-    margin-bottom:20px;
-    margin-top:20px;
+   color: grey;
+   height: 40px;
+   border: none;
+   border-radius: 0px;
+   transition-duration: 2s;
+   margin-bottom: 20px;
+   margin-top: 20px;
 }
-.dark-Mode-select-tag{
+.dark-Mode-Search-Icon {
+   display: flex;
+   height: 40px;
+   border-radius: 0px;
+   box-shadow: 1px 1px 2px 2px grey;
+   align-items: center;
+   background-color: #003366;
+   color: white;
+   border: none;
+   transition-duration: 2s;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+.light-Mode-Select-tag {
+   background-color: white;
+   color: black;
+   height: 40px;
+   border: none;
+   border-radius: 0px;
+   transition-duration: 2s;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+.dark-Mode-select-tag {
    background-color: grey;
-    color:white;
-    height:40px;
-    border:none;
-    border-radius:0px;
-    transition-duration:2s;  
-    margin-bottom:20px;
-    margin-top:20px;
+   color: white;
+   height: 40px;
+   border: none;
+   border-radius: 0px;
+   transition-duration: 2s;
+   margin-bottom: 20px;
+   margin-top: 20px;
 }
 
 .loader {
-  margin:auto;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 0.5s linear infinite; /* Safari */
-  animation: spin 0.5s linear infinite;
-  color:white;
+   margin: auto;
+   border: 16px solid #f3f3f3;
+   border-radius: 50%;
+   border-top: 16px solid #3498db;
+   width: 120px;
+   height: 120px;
+   -webkit-animation: spin 0.5s linear infinite; /* Safari */
+   animation: spin 0.5s linear infinite;
+   color: white;
 }
 
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+   0% {
+      -webkit-transform: rotate(0deg);
+   }
+   100% {
+      -webkit-transform: rotate(360deg);
+   }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.vedio {
+   position: absolute;
+   border: 10px solid black;
+   display: flex;
+   justify-content: center;
 }
